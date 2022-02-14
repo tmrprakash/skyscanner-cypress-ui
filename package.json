@@ -1,0 +1,43 @@
+{
+  "name": "skyscanner-ui",
+  "version": "1.0.0",
+  "description": "UI Automation for skyscanner.ie",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "test:firefox": "npm run delete:reportFolder && cypress run --browser firefox ; npm run report.js",
+    "test:headless": "npm run delete:reportFolder && cypress run ; npm run report.js",
+    "test:chrome": "npm run delete:reportFolder && cypress run --browser chrome ; npm run report.js",
+    "delete:reportFolder": "rm -rf report/ && rm -rf cypress/screenshots"
+  },
+  "keywords": [
+    "bbc"
+  ],
+  "author": "Muthu",
+  "license": "ISC",
+  "dependencies": {
+    "testcafe": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "testcafe-reporter-cucumber-json": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "babel-loader": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "cypress": "^9.4.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "multiple-cucumber-html-reporter": "^1.13.2",
+    "cypress-wait-until": "1.7.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/integration/bdd",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "report",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}
